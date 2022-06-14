@@ -83,6 +83,7 @@ session_start();
           </div>
           <!-- header column 1 -->
 
+
           <!-- header column 2 -->
           <div style="display: flex;flex-direction: column;">
             <table>
@@ -101,6 +102,9 @@ session_start();
             </table>
           </div>
           <!-- header column 2 -->
+
+
+
           </div>
           </div>
           <div>
@@ -113,6 +117,7 @@ session_start();
           <div style="display: flex; flex-direction: column;">
 
             <h1 style="text-align: center;margin-top: 50px;font-weight: bolder;">Daftar riwayat medis pasien</h1> 
+
 
 
                <table border="1" style="margin: 10px; padding: 10px;text-align: center;">

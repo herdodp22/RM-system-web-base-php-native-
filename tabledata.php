@@ -3,6 +3,7 @@
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
+    <meta http-equiv="refresh" content="1">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
@@ -14,17 +15,19 @@
 
 
 
+
   	<div style="display: flex; flex-direction: column;"> 
 
-  		<div style="text-align: left; margin-left: 10px;">
+  		<div style="text-align: left; margin-left: 10px;display: flex;flex-direction: row;margin: 10px;">
   				<a href="logout.php" style="text-decoration: none; color: black
   				"><span style="font-weight: bolder; font-size: 20px;color: red;">Keluar</span></a>
   			</div>
-  			<h1 style="text-align: center; margin-top: 10px; font-weight: bolder;">DAFTAR PASIEN</h1>
+  			<h1 style="text-align: center; margin-top: 10px; font-weight: bolder;">DAFTAR PASIEN TUNGGU</h1>
   			
   				<div style="display: flex;flex-direction: column;">
   			<table border="1" style="margin: 10px; padding: 10px; text-align: center;">
   				<tr>
+            <td><span style="font-weight: bolder;">ID waiting list</span></td>
   					<td><span style="font-weight: bolder;">ID pasien</span></td>
   					<td><span style="font-weight: bolder;">Nama pasien</span></td>
   					<td><span style="font-weight: bolder;">Alamat pasien</span></td>
@@ -37,21 +40,29 @@
   				include 'koneksi.php';
   				session_start();
 
-  				$cekdata = "SELECT * FROM informasipasien";
+  				$cekdata = "SELECT * FROM waitinglist";
   				$hubungkancekdata = mysqli_query($koneksi, $cekdata);
   				while($ambildata = mysqli_fetch_array($hubungkancekdata)){
+            $idwaitinglist = $ambildata['id_waitinglist'];
   					$idpasien = $ambildata['id_pasien'];
   					$namapasien = $ambildata['nama_pasien'];
   					$alamatpasien = $ambildata['alamat_pasien'];
-  					$jeniskelaminpasien = $ambildata['jeniskelamin_pasien'];
+  					$jeniskelaminpasien = $ambildata['jenis_kelamin'];
+            
   					?>
 
   					<tr>
+              <td><?php echo $idwaitinglist; ?></td>
   						<td><?php echo $idpasien; ?></td>
   						<td><?php echo $namapasien; ?></td>
   						<td><?php echo $alamatpasien; ?></td>
   						<td><?php echo $jeniskelaminpasien; ?></td>
-  						<td><a href="dokter.php?idpasien=<?php echo $idpasien; ?>">View</a></td>
+  						<td>
+                <div style="margin: 10px;">
+                <a href="dokter.php?idpasien=<?php echo $idpasien; ?>" style="margin: 10px;">View</a>
+                <a href="delete.php?idwaitinglist=<?php echo $idwaitinglist; ?>" style="margin: 10px;">Delete</a>
+                </div>
+              </td>
   					</tr>
 
   				<?php  
@@ -74,8 +85,6 @@
 
 
   
-   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+   
   </body>
 </html>

@@ -65,9 +65,6 @@ if(isset($_POST['submit'])){
                 <input type="search" name="caripasien" placeholder="Cari pasien"style="outline: none;">
                 <button type="submit" name="submit">Search</button>
               </div>
-              <div style="text-align: center;margin-top: 10px;">
-                <a href="tambahpasien.php" style="text-decoration: none;color: black;"><u>Tambahkan pasien baru</u></a>
-              </div>
             </form>
 
 
